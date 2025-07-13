@@ -1,0 +1,101 @@
+# Predicción de Resultados de Partidos de Fútbol
+
+Este proyecto presenta un modelo de Machine Learning para predecir el resultado de partidos de fútbol (Victoria Local, Empate, Victoria Visitante). El modelo utiliza un conjunto de características que describen el rendimiento histórico de los equipos, la forma reciente, estadísticas de goles y la disponibilidad de jugadores clave. Se utiliza un clasificador XGBoost para realizar las predicciones.
+
+El script `demo.py` contiene una implementación completa que incluye:
+
+1. Simulación de datos de partidos.
+2. Preprocesamiento de los datos.
+3. Entrenamiento de un modelo XGBoost.
+4. Evaluación del modelo.
+5. Una demostración de cómo predecir el resultado de un nuevo partido.
+
+## Características (Features)
+
+El modelo se entrena con las siguientes características simuladas para cada equipo (local y visitante):
+
+* **EloRating**: Puntuación Elo de los equipos.
+* **FormaReciente**: Puntos obtenidos en los últimos 5 partidos.
+* **GolesPromedioUltimos5**: Promedio de goles anotados en los últimos 5 partidos.
+* **GolesRecibidosPromedioUltimos5**: Promedio de goles recibidos en los últimos 5 partidos.
+* **AusenciaJugadorClave**: Indicador binario de ausencia de un jugador clave.
+* **PromedioGolesDelanteroClave**: Promedio de goles del delantero principal.
+* **Localia**: Ventaja de jugar en casa (aplicado solo al equipo local).
+* **EstiloAtaqueDefensa**: Estilo de juego del equipo (Ofensivo, Equilibrado, Defensivo).
+
+## Tecnologías Utilizadas
+
+* Python 3
+* Pandas
+* NumPy
+* Scikit-learn
+* XGBoost
+* Matplotlib
+* Seaborn
+
+## ¿Cómo ejecutar el demo?
+
+1. **Clonar el repositorio:**
+
+    ```bash
+    git clone https://github.com/Yliana-Gutierrez/ProyectoIA.git
+    cd ProyectoIA
+    ```
+
+2. **Crear un entorno virtual (recomendado):**
+
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # En Windows: venv\Scripts\activate
+    ```
+
+3. **Instalar las dependencias:**
+    Crea un archivo `requirements.txt` con el siguiente contenido:
+
+    ```txt
+    pandas
+    numpy
+    scikit-learn
+    xgboost
+    matplotlib
+    seaborn
+    ```
+
+    Luego, instálalas:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Ejecutar el script de demostración:**
+
+    ```bash
+    python demo.py
+    ```
+
+    El script entrenará el modelo, mostrará un reporte de evaluación, una matriz de confusión y finalmente imprimirá la predicción para un partido de ejemplo.
+
+## Ejemplo de Predicción
+
+El script finaliza mostrando una predicción para un nuevo partido simulado, incluyendo las probabilidades para cada resultado posible:
+
+```bash
+--- Demostración de Predicción para un Nuevo Partido ---
+
+Probabilidades de los resultados:
+  Empate: 23.45%
+  Victoria Local: 56.78%
+  Victoria Visitante: 19.77%
+
+El resultado predicho para el partido es: **Victoria Local**
+```
+
+*(Nota: Los valores exactos pueden variar ligeramente en cada ejecución).*
+
+## Posibles Mejoras
+
+* **Datos Reales:** Reemplazar los datos simulados con datos históricos reales de ligas de fútbol, obtenidos a través de APIs (ej. Opta, StatsBomb) o datasets públicos.
+* **Ingeniería de Características:** Añadir características más complejas como resultados de enfrentamientos directos (H2H), condiciones climáticas, o datos de rendimiento de jugadores específicos.
+* **Optimización de Hiperparámetros:** Utilizar técnicas como Grid Search o Bayesian Optimization para encontrar los mejores hiperparámetros para el modelo XGBoost.
+* **Otros Modelos:** Experimentar con otros algoritmos de clasificación como Redes Neuronales, Random Forest o Support Vector Machines.
+* **Despliegue:** Crear una API web (usando Flask o FastAPI) para servir el modelo y permitir predicciones en tiempo real.
